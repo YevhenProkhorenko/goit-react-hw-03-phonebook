@@ -4,13 +4,30 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
-import css from '../Phonebook/Phonebook.module.css';
+import css from '../Phonebook/Phonebook.module.scss';
 
 export default class Phonebook extends Component {
   state = {
     contacts: [],
     filter: '',
   };
+  componentDidMount() {
+    try {
+      const parseContacts = JSON.parse(localStorage.getItem('contacts'));
+      if (parseContacts?.length) {
+        this.setState({ contacts: parseContacts });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
 
   addConctact = data => {
     if (this.noDuplicates(data)) {

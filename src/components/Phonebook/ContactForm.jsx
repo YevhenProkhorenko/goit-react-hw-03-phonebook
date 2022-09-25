@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-import css from '../Phonebook/Phonebook.module.css';
+import css from '../Phonebook/Phonebook.module.scss';
 
 export default class ContactForm extends Component {
   state = {

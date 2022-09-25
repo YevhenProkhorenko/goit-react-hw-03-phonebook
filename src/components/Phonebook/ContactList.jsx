@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import css from '../Phonebook/Phonebook.module.css';
+import css from '../Phonebook/Phonebook.module.scss';
 
 export default function ContactList({ contacts, removeContact }) {
   const elements = contacts.map(contact => {
